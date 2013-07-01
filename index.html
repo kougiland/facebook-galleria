@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>KOUGILAND | galeria</title>
+		<meta name="description" content="kougilandexperiments" />
+		<meta name="keywords" content="facebook,google,galery,photos" />
+		<meta name="author" content="kougiland" />
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">	
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+	<link href='css/custom.css' rel='stylesheet' type='text/css'>
+	<!-- animation -->
+	<link href='css/animation.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-direction.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-duration.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-iteration-count.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-name.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-perspective.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-play-state.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-timing-function.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-transition-delay.css' rel='stylesheet' type='text/css'>
+	<link href='css/animation-transition-duration.css' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+	<section id=body3Dcontainer>
+	<!--=======================================BIG-SLIDER=================================================-->
+	
+	<div id=close class=sliderItems>&times;</div>
+	<div class="prev sliderItems">&lang;</div>
+	<div class="next sliderItems">&rang;</div>
+	
+	<ul id=sliderWrapper class=glass></ul>
+	
+	<div id=body3D class=backface-visibility-hidden>
+		<!--=======================================MAIN-HEADER===============================================-->
+		<header id=mainHeader class=sizeFullWidth>
+	   
+		    <nav id=mainNav data-position=center>  
+				<div class=galleria>Galleria</div>
+		    	<ul>
+					<li><a id=talkingAbout></a><span> are Talking about Us</span></li>
+					<li><a id=likesUs></a><span> Like Us</span></li>		    				    		
+		    	</ul>
+				<div id=videos>Videos</div>
+		    </nav>
+ 
+		</header>
+		<!--=======================================MAIN-WRAPPER==============================================-->
+		<section id=mainWrapper class=sizeFullWidth>
+			<div data-position=center> 
+				<div id=sliderWrappers></div>
+				
+				<h2 class="text-center" id=mission></h2>
+				<p class="text-center"><small id=siteDescription></small></p>
+				
+				<div id=a-b-c>
+					
+				</div>
+				
+				<div id=d-e-f>
+					
+				</div>
+			</div>
+		</section>
+		
+		<aside class=sizeFullWidth>
+			<div data-position=center>
+				<div>
+					<figure id=profile></figure>
+				</div>
+				<div id=siteAbout><h1>About</h1></div><div></div><div id=siteOverview><h1>Overview</h1></div>
+			</div>
+			<hr class=sizeFullWidth>
+		</aside>
+		
+		<!--======================================MAIN-FOOTER================================================-->
+		<footer id=mainFooter class=sizeFullWidth>
+			<div data-position=center> 
+				<div id=aboutFooter><a id=siteName>&copy; </a><a id=founded></a></div>
+				<a id=creator href=http://kougiland.com>By kougiland</a>
+			</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>
+		if (!window.jQuery) {
+			document.write('<script src="/js/jquery-2.0.0.min.js"><\/script>');
+		}
+		</script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/facebook.min.js"></script>
+		<script>
+		
+		var pageID = 'starbucks';//YOUR PAGE ID OR NAME GOES HERE for Ex: "designmilk"  or "500px"
+		
+		
+		/*
+		function getTransform(el) {
+			var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
+
+			if(!results) return [0, 0, 0];
+			if(results[1] == '3d') return results.slice(2,5);
+
+			results.push(0);
+			return results.slice(5, 8);
+		} */
+	
+		
+		$(document).ready(function(){
+			$('#videos').click(function () {
+				$("#body3D").animate({ scrollTop: $('#d-e-f').offset().top }, 1000);
+			});
+			$("#body3D").bind("scroll", function() {
+				if ($(this).scrollTop() > 320) {
+					$("#goTop").fadeIn();
+				} else {
+					$("#goTop").stop().fadeOut();
+				}
+			});
+			$("#goTop").click(function(){
+				$("#body3D").animate({ scrollTop: 0 }, "slow");
+			});
+			//==============================QUEUE ANIMATION=================================
+			var q = $({});
+
+			function animToQueue(theQueue, selector, animationprops) {
+				theQueue.queue(function(next) {
+					$(selector).animate(animationprops, next);
+				});
+			}
+
+			animToQueue(q, '#first', {
+				width: '+=100'
+			});
+			animToQueue(q, '#second', {
+				height: '+=100'
+			});
+			animToQueue(q, '#second', {
+				width: '-=50'
+			});
+			animToQueue(q, '#first', {
+				height: '-=50'
+			});
+		
+			/*==============================BIG-SLIDER=================================			
+			├── ul#sliderWrapper  
+				├── li.active
+					├── img
+				├── li
+				├── li
+			==========================================================================*/
+		
+			$("#close").click(function(){
+				$(".sliderItems").fadeOut(300);
+				$("#sliderWrapper").delay(300).animate({'top' : '100%', 'opacity':'0'},function(){
+					$("#body3D").removeClass("body3D");
+					$("ul#sliderWrapper").empty();
+				}); 
+			});
+			
+			$(".next").click(function(){
+				if($("li.active").next().length > 0){
+					$("li.active").removeClass("active").next("li").addClass("active");
+				}else{
+					$("ul#sliderWrapper li:first-child").addClass("active").siblings("li").removeClass("active");
+				}
+			});
+			$(".prev").click(function(){
+				if($("li.active").prev().length > 0){
+					$("li.active").removeClass("active").prev("li").addClass("active");
+				}else{
+					$("ul#sliderWrapper li:last-child").addClass("active").siblings("li").removeClass("active");
+				}
+			});
+
+		
+			/*================================================
+					TOUCH DEVICES
+			  ================================================*/
+			
+			$('body').bind( "touchstart", function(e){
+					// do something
+			});
+			$('body').bind( "touchend", function(e){
+					// do something
+			});
+		});
+		</script>
+		<!--START GOOGLE TRACKING -->
+		<script type="text/javascript">
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-22901002-5']);
+			  _gaq.push(['_trackPageview']);
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+		</script>		
+		</footer>
+		</div>
+		<div id=goTop>Top</div>
+	</section>
+    </body>
+</html>
